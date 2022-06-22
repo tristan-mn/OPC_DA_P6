@@ -1,0 +1,23 @@
+.en_tete{
+    background-color: aquamarine;
+}
+
+.meilleur_film{
+    background-color:cyan;
+}
+
+.sept_meilleurs_films{
+    background-color: coral;
+}
+
+.premiere_categorie{
+    background-color: darkgray;
+}
+
+.deuxieme_categorie{
+    background-color: darkmagenta;
+}
+
+.troisieme_categorie{
+    background-color: chocolate;
+}
