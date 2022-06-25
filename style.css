@@ -1,10 +1,60 @@
-.en_tete{
-    background-color: aquamarine;
+body{
+    color: white;
+    background-color: black;
 }
 
-.meilleur_film{
-    background-color:cyan;
+.en_tete{
+    display: flex;
+    justify-content: space-between;
+    
 }
+.en_tete h1{
+    margin: 2% 2% 2% 2%;
+}
+
+.navigateur{
+    margin-right: 60%;
+}
+
+.navigateur ul{
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+li a{
+    text-decoration: none;
+}
+h1{
+    color: red;
+}
+a h2{
+    color: white;
+}
+
+#accueil{
+    width: 40%;
+    
+}
+#categories{
+    width: 40%;
+}
+
+#meilleur_film_section{
+    display: flex;
+    justify-content: space-between;
+}
+
+#meilleur_film_infos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 80px;
+}
+
+
+
 
 .sept_meilleurs_films{
     background-color: coral;

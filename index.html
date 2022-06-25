@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <meta charset="utf-8"/>
-    <title>JustStreamIt</title>
-</head>
-<body>
-    <!-- En tête -->
-    <div class="en_tete"><h1>JustStreamIt</h1><h2>Accueil</h2><h2>Catégories</h2></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" />
+        <meta charset="utf-8"/>
+        <title>JustStreamIt</title>
+    </head>
+    <body>
+        <!-- En tête -->
+        <header class="en_tete">
+            <h1>JustStreamIt</h1>
+            <nav class="navigateur">
+                <ul>
+                    <li id="accueil">
+                        <a href="">
+                            <h2>Accueil</h2>
+                        </a>
+                    </li>
+                    <li id="categories">
+                        <a href="">
+                            <h2>Catégories</h2>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
     <!-- le film le mieux noté -->
-    <div class="meilleur_film">
-        <p>meilleur film</p>
+    <div id="meilleur_film_section">
+        <div id="meilleur_film_infos">
+            <h3 id="meilleur_film_titre"></h3>
+            <div id="meilleur_film_bouton" ><input type="button" value="en savoir plus"></div>
+            </br>
+            <div id="meilleur_film_description"></div>
+        </div>
+        <div><img id="meilleur_film_image"></div>
     </div>
     <!-- les 7 films les mieux notés -->
     <div class="sept_meilleurs_films">
@@ -60,5 +83,6 @@
         <div></div>
     </div>
     
+<script src="juststream.js"></script>
 </body>
 </html>
