@@ -58,6 +58,7 @@ a h2{
 
 .sept_meilleurs_films{
     background-color: coral;
+    display: flex;
 }
 
 .premiere_categorie{
