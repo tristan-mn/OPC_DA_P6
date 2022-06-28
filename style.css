@@ -63,12 +63,15 @@ a h2{
 
 .premiere_categorie{
     background-color: darkgray;
+    display: flex;
 }
 
 .deuxieme_categorie{
     background-color: darkmagenta;
+    display: flex;
 }
 
 .troisieme_categorie{
     background-color: chocolate;
+    display: flex;
 }
