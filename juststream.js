@@ -70,7 +70,7 @@ function chercherMeilleurFilm(){
 chercherMeilleurFilm();
 
 
-async function afficherSeptFilms(premierLien, deuxiemeLien, nomClass){
+async function afficherSeptFilms(premierLien, deuxiemeLien, id){
     
     await fetch(premierLien)
     .then(function(res) {
@@ -83,31 +83,38 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, nomClass){
         let troisiemeFilmLien = value["results"][3]["url"];
         let quatriemeFilmLien = value["results"][4]["url"];
         films.push(premierFilmLien, secondFilmLien, troisiemeFilmLien, quatriemeFilmLien);
-        let categorieFilm = document.getElementsByClassName(nomClass);
-
-        let bouton = document.createElement("input");
-        bouton.type = "button";
-        bouton.value = "previous";
-        categorieFilm[0].appendChild(bouton);
+        let categorieFilm = document.getElementById(id);
 
         let premierFilmInfos = await chercherFilmInfos(films[0]);
         let imagePremierFilm = document.createElement("img");
-        categorieFilm[0].appendChild(imagePremierFilm);
+        let divPremierFilm = document.createElement("div");
+        divPremierFilm.classList.add("slide");
+        categorieFilm.appendChild(divPremierFilm);
+        divPremierFilm.appendChild(imagePremierFilm);
         imagePremierFilm.src = premierFilmInfos["image"];
 
         let secondFilmInfos =  await chercherFilmInfos(films[1]);
         let imageSecondFilm = document.createElement("img");
-        categorieFilm[0].appendChild(imageSecondFilm);
+        let divSecondFilm = document.createElement("div");
+        divSecondFilm.classList.add("slide");
+        categorieFilm.appendChild(divSecondFilm);
+        divSecondFilm.appendChild(imageSecondFilm);
         imageSecondFilm.src = secondFilmInfos["image"];
 
         let troisiemeFilmInfos = await chercherFilmInfos(films[2]);
         let imageTroisiemeFilm = document.createElement("img");
-        categorieFilm[0].appendChild(imageTroisiemeFilm);
+        let divTroisiemeFilm = document.createElement("div");
+        divTroisiemeFilm.classList.add("slide");
+        categorieFilm.appendChild(divTroisiemeFilm);
+        divTroisiemeFilm.appendChild(imageTroisiemeFilm);
         imageTroisiemeFilm.src = troisiemeFilmInfos["image"];
 
         let quatriemeFilmInfos = await chercherFilmInfos(films[3]);
         let imageQuatriemeFilm = document.createElement("img");
-        categorieFilm[0].appendChild(imageQuatriemeFilm); 
+        let divQuatriemeFilm = document.createElement("div");
+        divQuatriemeFilm.classList.add("slide");
+        categorieFilm.appendChild(divQuatriemeFilm);
+        divQuatriemeFilm.appendChild(imageQuatriemeFilm);
         imageQuatriemeFilm.src = quatriemeFilmInfos["image"];
 
     })
@@ -124,27 +131,31 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, nomClass){
         let sixiemeFilmLien = value["results"][1]["url"];
         let septiemeFilmLien = value["results"][2]["url"];
         films.push(cinquiemeFilmLien , sixiemeFilmLien, septiemeFilmLien);
-        let categorieFilm = document.getElementsByClassName(nomClass);
+        let categorieFilm = document.getElementById(id);
 
         let cinquiemeFilmInfos = await chercherFilmInfos(films[4]);
         let imagecinquiemeFilm = document.createElement("img");
-        categorieFilm[0].appendChild(imagecinquiemeFilm);
+        let divCinquiemeFilm = document.createElement("div");
+        divCinquiemeFilm.classList.add("slide");
+        categorieFilm.appendChild(divCinquiemeFilm);
+        divCinquiemeFilm.appendChild(imagecinquiemeFilm);
         imagecinquiemeFilm.src = cinquiemeFilmInfos["image"];
 
         let sixiemeFilmInfos = await chercherFilmInfos(films[5]);
         let imagesixiemeFilm = document.createElement("img");
-        categorieFilm[0].appendChild(imagesixiemeFilm);
+        let divSixiemeFilm = document.createElement("div");
+        divSixiemeFilm.classList.add("slide");
+        categorieFilm.appendChild(divSixiemeFilm);
+        divSixiemeFilm.appendChild(imagesixiemeFilm);
         imagesixiemeFilm.src = sixiemeFilmInfos["image"];
 
         let septiemeFilmInfos = await chercherFilmInfos(films[6]);
         let imageSeptiemeFilm = document.createElement("img");
-        categorieFilm[0].appendChild(imageSeptiemeFilm);
+        let divSeptiemeFilm = document.createElement("div");
+        divSeptiemeFilm.classList.add("slide");
+        categorieFilm.appendChild(divSeptiemeFilm);
+        divSeptiemeFilm.appendChild(imageSeptiemeFilm);
         imageSeptiemeFilm.src = septiemeFilmInfos["image"];
-
-        let bouton2 = document.createElement("input");
-        bouton2.type = "button";
-        bouton2.value = "previous";
-        categorieFilm[0].appendChild(bouton2);
 
     })
     .catch(function(err) {
@@ -156,26 +167,26 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, nomClass){
 async function afficherTousFilms(){
 let premierePageMeilleursFilms = "http://localhost:8000/api/v1/titles/?page=1&sort_by=-imdb_score";
 let deuxiemePageMeilleursFilms = "http://localhost:8000/api/v1/titles/?page=2&sort_by=-imdb_score";
-let categorieMeilleursFilms = "sept_meilleurs_films";
+let categorieMeilleursFilms = "contenu_carousel_sept_meilleurs_films";
 
 septMeilleursFilm = await afficherSeptFilms(premierePageMeilleursFilms, deuxiemePageMeilleursFilms, categorieMeilleursFilms);
 
 
 let premierePageMeilleursFilmsAnimation = "http://localhost:8000/api/v1/titles/?genre=Animation&page=1&sort_by=-imdb_score";
 let deuxiemePageMeilleursFilmsAnimation = "http://localhost:8000/api/v1/titles/?genre=Animation&page=2&sort_by=-imdb_score";
-let categorieFilmsAnimation = "premiere_categorie";
+let categorieFilmsAnimation = "contenu_carousel_premiere_categorie";
 
 septMeilleursFilmAnimation = await afficherSeptFilms(premierePageMeilleursFilmsAnimation, deuxiemePageMeilleursFilmsAnimation, categorieFilmsAnimation);
 
 let premierePageMeilleursFilmsSport = "http://localhost:8000/api/v1/titles/?genre=Sport&page=1&sort_by=-imdb_score";
 let deuxiemePageMeilleursFilmsSport = "http://localhost:8000/api/v1/titles/?genre=Sport&page=2&sort_by=-imdb_score";
-let categorieFilmsSport = "deuxieme_categorie";
+let categorieFilmsSport = "contenu_carousel_deuxieme_categorie";
 
 septMeilleursFilmSport =  await afficherSeptFilms(premierePageMeilleursFilmsSport, deuxiemePageMeilleursFilmsSport, categorieFilmsSport);
 
 let premierePageMeilleursFilmsSciFi = "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page=1&sort_by=-imdb_score";
 let deuxiemePageMeilleursFilmsSciFi = "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page=2&sort_by=-imdb_score";
-let categorieFilmsSciFi = "troisieme_categorie";
+let categorieFilmsSciFi = "contenu_carousel_troisieme_categorie";
 
 septMeilleursFilmSciFi = await  afficherSeptFilms(premierePageMeilleursFilmsSciFi, deuxiemePageMeilleursFilmsSciFi, categorieFilmsSciFi);
 
@@ -184,3 +195,39 @@ septMeilleursFilmSciFi = await  afficherSeptFilms(premierePageMeilleursFilmsSciF
 }
 
 let afficherFilms = afficherTousFilms();
+
+
+
+
+
+// class Carousel{
+//     /**
+//      * 
+//      * @param {HTMLElement} element 
+//      * @param {Object} options
+//      * @param {Object} 
+//      * @param {Object} 
+//      */
+//     constructor(element, options = {}){
+//         this.element = element
+//         this.options = Object.assign({}, {
+//             slidesToScroll : 1,
+//             slidesVisible : 1
+//         }, options)
+//         debugger
+//     }
+// }
+
+// document.addEventListener('DOMContentLoaded', function(){
+//     new Carousel(document.querySelector(".contenu_carousel_sept_meilleurs_films"),{
+//         slidesToScroll : 3,
+//         slidesVisible : 3
+//     })
+// })
+
+
+
+
+
+
+

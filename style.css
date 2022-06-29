@@ -53,25 +53,81 @@ a h2{
     margin-left: 80px;
 }
 
-
-
-
-.sept_meilleurs_films{
-    background-color: coral;
+.carousel_sept_meilleurs_films {
+    margin-left: 10px;
     display: flex;
 }
 
-.premiere_categorie{
-    background-color: darkgray;
+#contenu_carousel_sept_meilleurs_films {
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        transform: translate3d(40%, 0, 0); 
+    }
+    
+    
+.slide {
+        width: 100%;
+        height: 100%;      
+  }
+
+.carousel_premiere_categorie{
+    margin-left: 10px;
     display: flex;
 }
 
-.deuxieme_categorie{
-    background-color: darkmagenta;
+#contenu_carousel_premiere_categorie{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* transform: translate3d(80%, 0, 0); */
+
+
+}
+.carousel_deuxieme_categorie{
+    margin-left: 10px;
     display: flex;
 }
 
-.troisieme_categorie{
-    background-color: chocolate;
+#contenu_carousel_deuxieme_categorie{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
     display: flex;
+    /* transform: translate3d(80%, 0, 0); */
+
+
+}
+.carousel_troisieme_categorie{
+    margin-left: 10px;
+    display: flex;
+}
+
+#contenu_carousel_troisieme_categorie{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* transform: translate3d(80%, 0, 0); */
+
+
+}
+
+.bouton-prev{
+    border-radius: 50%;
+    right: auto;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 20px;
+}
+.bouton-next{
+    border-radius: 50%;
+    left: auto;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    position: absolute;
 }
