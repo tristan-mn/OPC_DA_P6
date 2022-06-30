@@ -56,69 +56,79 @@ a h2{
 .carousel_sept_meilleurs_films {
     margin-left: 10px;
     display: flex;
-    width: 130%;
+    width: 180%;
+    height: 180%;
 }
 
 #contenu_carousel_sept_meilleurs_films {
-        overflow: hidden;
-        height: 200%;
-        width: 200%;
-        display: flex;
-        transform: translate(-20%);
-        /* transform: translate3d(40%, 0, 0);  */
+    overflow: hidden;
+    height: 150%;
+    width: 150%;
+    display: flex;
+    transform: translate(-30%);
     }
     
     
 .slide {
         margin-left: 20px;
-        width: 700px;
-        height: 400px;      
+        width: 100%;
+        height: 100%;      
   }
 
 img{
     width: 100%;
     height: 100%;
 }
+.slide:hover{
+    transform: translate3d(0, -10px, 0);
+    cursor: pointer;
+}
 
 .carousel_premiere_categorie{
     margin-left: 10px;
     display: flex;
+    width: 150%;
+    height: 150%;
 }
 
 #contenu_carousel_premiere_categorie{
     overflow: hidden;
-    height: 100%;
-    width: 100%;
+    height: 150%;
+    width: 150%;
     display: flex;
-    /* transform: translate3d(80%, 0, 0); */
+    transform: translate(-20%);
 
 
 }
 .carousel_deuxieme_categorie{
     margin-left: 10px;
     display: flex;
+    width: 150%;
+    height: 150%;
 }
 
 #contenu_carousel_deuxieme_categorie{
     overflow: hidden;
-    height: 100%;
-    width: 100%;
+    height: 150%;
+    width: 150%;
     display: flex;
-    /* transform: translate3d(80%, 0, 0); */
+    transform: translate(-20%);
 
 
 }
 .carousel_troisieme_categorie{
     margin-left: 10px;
     display: flex;
+    width: 150%;
+    height: 150%;
 }
 
 #contenu_carousel_troisieme_categorie{
     overflow: hidden;
-    height: 100%;
-    width: 100%;
+    height: 150%;
+    width: 150%;
     display: flex;
-    /* transform: translate3d(80%, 0, 0); */
+    transform: translate(-20%);
 
 
 }

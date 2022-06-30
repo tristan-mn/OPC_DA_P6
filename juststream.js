@@ -198,26 +198,25 @@ let afficherFilms = afficherTousFilms();
 
 
 
-function bougerPremierCarousel(debutIndex){
- var index = 0;
- let contenu = document.querySelector("#contenu_carousel_sept_meilleurs_films");
+function bougerCarousel(index, id){
+ let contenu = document.querySelector(id);
  boutonPrecedent = contenu.nextElementSibling;
  boutonPrecedent.addEventListener('click', function(){
-    index = index +20;
-    let carousel1 = document.getElementById("contenu_carousel_sept_meilleurs_films");
-    carousel1.style.transform = "translate("+ index +"%)";
+    index = index + 15;
+    contenu.style.transform = "translate("+ index +"%)";
   });
  let boutonSuivant = boutonPrecedent.nextElementSibling;
  boutonSuivant.addEventListener('click', function(){
-    index = index -20;
-    let carousel1 = document.getElementById("contenu_carousel_sept_meilleurs_films");
-    carousel1.style.transform = "translate("+ index +"%)";
+    index = index -15;
+    contenu.style.transform = "translate("+ index +"%)";
   });
-
-
 };
 
-bougerPremierCarousel();
+let bougerSeptMeilleursFilms = bougerCarousel(0, "#contenu_carousel_sept_meilleurs_films");
+let bougerPremiereCategorie = bougerCarousel(0, "#contenu_carousel_premiere_categorie");
+let bougerDeuxiemeCategorie = bougerCarousel(0, "#contenu_carousel_deuxieme_categorie");
+let bougerTroisiemeCategorie = bougerCarousel(0, "#contenu_carousel_troisieme_categorie");
+
 
 
 
