@@ -198,32 +198,26 @@ let afficherFilms = afficherTousFilms();
 
 
 
+function bougerPremierCarousel(debutIndex){
+ var index = 0;
+ let contenu = document.querySelector("#contenu_carousel_sept_meilleurs_films");
+ boutonPrecedent = contenu.nextElementSibling;
+ boutonPrecedent.addEventListener('click', function(){
+    index = index +20;
+    let carousel1 = document.getElementById("contenu_carousel_sept_meilleurs_films");
+    carousel1.style.transform = "translate("+ index +"%)";
+  });
+ let boutonSuivant = boutonPrecedent.nextElementSibling;
+ boutonSuivant.addEventListener('click', function(){
+    index = index -20;
+    let carousel1 = document.getElementById("contenu_carousel_sept_meilleurs_films");
+    carousel1.style.transform = "translate("+ index +"%)";
+  });
 
 
-// class Carousel{
-//     /**
-//      * 
-//      * @param {HTMLElement} element 
-//      * @param {Object} options
-//      * @param {Object} 
-//      * @param {Object} 
-//      */
-//     constructor(element, options = {}){
-//         this.element = element
-//         this.options = Object.assign({}, {
-//             slidesToScroll : 1,
-//             slidesVisible : 1
-//         }, options)
-//         debugger
-//     }
-// }
+};
 
-// document.addEventListener('DOMContentLoaded', function(){
-//     new Carousel(document.querySelector(".contenu_carousel_sept_meilleurs_films"),{
-//         slidesToScroll : 3,
-//         slidesVisible : 3
-//     })
-// })
+bougerPremierCarousel();
 
 
 

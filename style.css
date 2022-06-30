@@ -56,21 +56,29 @@ a h2{
 .carousel_sept_meilleurs_films {
     margin-left: 10px;
     display: flex;
+    width: 130%;
 }
 
 #contenu_carousel_sept_meilleurs_films {
         overflow: hidden;
-        height: 100%;
-        width: 100%;
+        height: 200%;
+        width: 200%;
         display: flex;
-        transform: translate3d(40%, 0, 0); 
+        transform: translate(-20%);
+        /* transform: translate3d(40%, 0, 0);  */
     }
     
     
 .slide {
-        width: 100%;
-        height: 100%;      
+        margin-left: 20px;
+        width: 700px;
+        height: 400px;      
   }
+
+img{
+    width: 100%;
+    height: 100%;
+}
 
 .carousel_premiere_categorie{
     margin-left: 10px;
@@ -116,17 +124,19 @@ a h2{
 }
 
 .bouton-prev{
+    margin-top: 80px;
     border-radius: 50%;
     right: auto;
     width: 80px;
     height: 80px;
     position: absolute;
-    left: 20px;
+    left: -10px;
 }
 .bouton-next{
+    margin-top: 80px;
     border-radius: 50%;
     left: auto;
-    right: 20px;
+    right: -10px;
     width: 80px;
     height: 80px;
     position: absolute;
