@@ -1,72 +1,83 @@
 body{
     color: white;
     background-color: black;
+    width: auto;
 }
 
 .en_tete{
     display: flex;
-    justify-content: space-between;
-    
-}
-.en_tete h1{
+    width: auto;
     margin: 2% 2% 2% 2%;
+    
 }
 
 .navigateur{
-    margin-right: 60%;
-}
-
-.navigateur ul{
-    width: 20vw;
-    display: flex;
-    justify-content: space-between;
     list-style-type: none;
+    margin-left: 20px;
+    padding: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+ul li{
+    list-style: none;
+}
+ul{
+    display: flex;
+    padding: 0;
 }
 
-li a{
-    text-decoration: none;
-}
 h1{
     color: red;
+    width: auto;
+    height: auto;
+    font-size: medium;
 }
 a h2{
     color: white;
-}
-
-#accueil{
-    width: 40%;
-    
-}
-#categories{
-    width: 40%;
+    width: 100%;
+    padding-left: 0;
+    font-size: small;
+    margin: 0;
+    margin-right: 5px;
 }
 
 #meilleur_film_section{
     display: flex;
-    justify-content: space-between;
+    width: auto;
+    justify-content: space-around;
+    height: 40vh;
+}
+#meilleur_film_infos{
+    width: 30%;
+}
+#div_meilleur_film_image{
+    width: 40%;
 }
 
-#meilleur_film_infos{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 80px;
+#meilleur_film_image{
+    width: 100%;
 }
+
 
 .carousel_sept_meilleurs_films {
+    margin-top: auto;
     margin-left: 10px;
     display: flex;
-    width: 180%;
-    height: 180%;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
 }
 
 #contenu_carousel_sept_meilleurs_films {
-    overflow: hidden;
-    height: 150%;
-    width: 150%;
+    height: 100%;
+    width: 100%;
     display: flex;
-    transform: translate(-30%);
+    transform: translate(-10%);
     }
+#contenu_carousel_sept_meilleurs_films img{
+    width: 200px;
+}
     
     
 .slide {
@@ -85,69 +96,113 @@ img{
 }
 
 .carousel_premiere_categorie{
+    margin-top: auto;
     margin-left: 10px;
     display: flex;
-    width: 150%;
-    height: 150%;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
 }
 
 #contenu_carousel_premiere_categorie{
-    overflow: hidden;
-    height: 150%;
-    width: 150%;
+    height: 100%;
+    width: 100%;
     display: flex;
-    transform: translate(-20%);
+    transform: translate(-10%);
 
 
 }
+
+.carousel_premiere_categorie img{
+    width: 200px;
+}
+
 .carousel_deuxieme_categorie{
+    margin-top: auto;
     margin-left: 10px;
     display: flex;
-    width: 150%;
-    height: 150%;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
 }
 
 #contenu_carousel_deuxieme_categorie{
-    overflow: hidden;
-    height: 150%;
-    width: 150%;
+    height: 100%;
+    width: 100%;
     display: flex;
-    transform: translate(-20%);
-
-
+    transform: translate(-10%);
 }
+
+.carousel_deuxieme_categorie img{
+    width: 200px;
+}
+
+
 .carousel_troisieme_categorie{
+    margin-top: auto;
     margin-left: 10px;
     display: flex;
-    width: 150%;
-    height: 150%;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
 }
 
 #contenu_carousel_troisieme_categorie{
-    overflow: hidden;
-    height: 150%;
-    width: 150%;
+    height: 100%;
+    width: 100%;
     display: flex;
-    transform: translate(-20%);
+    transform: translate(-10%);
 
 
 }
 
+.carousel_troisieme_categorie img{
+    width: 200px;
+}
+
 .bouton-prev{
-    margin-top: 80px;
+    margin-top: auto;
     border-radius: 50%;
     right: auto;
-    width: 80px;
-    height: 80px;
+    width: 10%;
+    height: 10%;
     position: absolute;
     left: -10px;
 }
 .bouton-next{
-    margin-top: 80px;
+    margin-top: auto;
     border-radius: 50%;
     left: auto;
     right: -10px;
-    width: 80px;
-    height: 80px;
+    width: 10%;
+    height: 10%;
     position: absolute;
+}
+#modal{
+    margin-top: 10%;
+    margin-left: 10%;
+    position: fixed;
+    z-index: 1;
+    padding-top: 10px;
+    padding-left: 10px;
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 60%;
+    overflow: auto;
+    border: 1px solid #888;
+    background-color: lightblue;
+    color: black;
+}
+#fermerModal{
+    color: black;
+    float: right;
+    margin-right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+#fermerModal:hover, #fermerModal:focus{
+    color: blue;
+    text-decoration: none;
+    cursor: pointer;
 }

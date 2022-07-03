@@ -26,6 +26,70 @@ async function chercherFilmInfos(lienFilm){
     
 };
 
+function creerModal(film){
+
+    let modal = document.createElement("div");
+    modal.setAttribute("id", "modal");
+    document.body.appendChild(modal);
+
+    let contenuModal = document.createElement("div")
+    contenuModal.setAttribute("id", "modal_content")
+
+    let titre = document.createElement("p");
+    titre.textContent = "Titre : " + film["titre"];
+    let fermerModal = document.createElement("span");
+    fermerModal.setAttribute("id", "fermerModal");
+    fermerModal.textContent = "X";
+
+    let image = document.createElement("img");
+    image.src = film["image"];
+    image.style.width = "40%";
+    image.style.height = "40%";
+    image.style.paddingLeft = "30%";
+    let genre = document.createElement("p")
+    genre.textContent = "genre : " + film["genre"];
+    let dateSortie = document.createElement("p");
+    dateSortie.textContent = "date de sortie : " + film["dateSortie"];
+    let rated = document.createElement("p");
+    rated.textContent = "note : " + film["rated"];
+    let imdb = document.createElement("p");
+    imdb.textContent = "Score IMDB : " + film["scoreImdb"];
+    let realisteur = document.createElement("p");
+    realisteur.textContent = "Réalisateur.s : " + film["realisateur"];
+    let acteurs = document.createElement("p");
+    acteurs.textContent = "Acteurs : " + film["acteurs"];
+    let duree = document.createElement("p");
+    duree.textContent = "Durée du film : " + film["duree"];
+    let pays = document.createElement("p");
+    pays.textContent = "Pays : " + film["paysOrigine"];
+    let resultBoxOffice = document.createElement("p");
+    resultBoxOffice.textContent = "Résulat au box office : " + film["resultatBoxOffice"];
+    let description = document.createElement("p");
+    description.textContent = "Description : " + film["resume"];
+    contenuModal.appendChild(fermerModal);
+    contenuModal.appendChild(image);
+    contenuModal.appendChild(titre);
+    contenuModal.appendChild(genre);
+    contenuModal.appendChild(dateSortie);
+    contenuModal.appendChild(rated);
+    contenuModal.appendChild(imdb);
+    contenuModal.appendChild(realisteur);
+    contenuModal.appendChild(acteurs);
+    contenuModal.appendChild(duree);
+    contenuModal.appendChild(pays);
+    contenuModal.appendChild(resultBoxOffice);
+    contenuModal.appendChild(description);
+    modal.appendChild(contenuModal);
+
+    let croix = document.getElementById("fermerModal"); 
+    croix.addEventListener("click", function() {
+    document.body.removeChild(modal)
+  })
+};
+
+
+function afficherModal(){}
+
 
 
 function chercherMeilleurFilm(){
@@ -34,38 +98,26 @@ function chercherMeilleurFilm(){
             if (res.ok) {
             return res.json();
             }
-        }).then(function(value) {
+        }).then(async function(value) {
             let urlFilm = value["results"][0]["url"];
-            fetch(urlFilm)
-                .then(function(res) {
-                    if(res.ok)
-                    return res.json();
-                }).then(function(value){
-
-                    let titreFilm = document.getElementById("meilleur_film_titre");
-                    titreFilm.textContent = value["title"];
-
-                    let descriptionFilm = document.getElementById("meilleur_film_description");
-                    descriptionFilm.textContent = value["description"];
-
-
-                    let image = document.getElementById("meilleur_film_image");
-                    image.src = value["image_url"];
-                    image.style.marginBottom = "0px";
-                    image.style.width = "55vw";
-                    image.style.height = "400px";
-
+            meilleurFilmInfos = await chercherFilmInfos(urlFilm);
+            let titreFilm = document.getElementById("meilleur_film_titre");
+            titreFilm.textContent = meilleurFilmInfos["titre"];
+            let descriptionFilm = document.getElementById("meilleur_film_description");
+            descriptionFilm.textContent = meilleurFilmInfos["resume"];
+            let image = document.getElementById("meilleur_film_image");
+            image.src = meilleurFilmInfos["image"];
+            meilleurFilmBouton = document.getElementById("meilleur_film_bouton");
+            meilleurFilmBouton.addEventListener("click", function(){
+                creerModal(meilleurFilmInfos);
+            })
 
                 })
                   .catch(function(err) {
                     console.log(err);
                 });
-
-        })
-        .catch(function(err) {
-            console.log(err);
-        });
-}
+ }
+       
 
 chercherMeilleurFilm();
 
@@ -92,7 +144,10 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
         categorieFilm.appendChild(divPremierFilm);
         divPremierFilm.appendChild(imagePremierFilm);
         imagePremierFilm.src = premierFilmInfos["image"];
-
+        imagePremierFilm.addEventListener("click", function(){
+            creerModal(premierFilmInfos);
+        })
+        
         let secondFilmInfos =  await chercherFilmInfos(films[1]);
         let imageSecondFilm = document.createElement("img");
         let divSecondFilm = document.createElement("div");
@@ -100,7 +155,10 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
         categorieFilm.appendChild(divSecondFilm);
         divSecondFilm.appendChild(imageSecondFilm);
         imageSecondFilm.src = secondFilmInfos["image"];
-
+        imageSecondFilm.addEventListener("click", function(){
+            creerModal(secondFilmInfos);
+        })
+        
         let troisiemeFilmInfos = await chercherFilmInfos(films[2]);
         let imageTroisiemeFilm = document.createElement("img");
         let divTroisiemeFilm = document.createElement("div");
@@ -108,7 +166,10 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
         categorieFilm.appendChild(divTroisiemeFilm);
         divTroisiemeFilm.appendChild(imageTroisiemeFilm);
         imageTroisiemeFilm.src = troisiemeFilmInfos["image"];
-
+        imageTroisiemeFilm.addEventListener("click", function(){
+            creerModal(troisiemeFilmInfos);
+        })
+        
         let quatriemeFilmInfos = await chercherFilmInfos(films[3]);
         let imageQuatriemeFilm = document.createElement("img");
         let divQuatriemeFilm = document.createElement("div");
@@ -116,12 +177,15 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
         categorieFilm.appendChild(divQuatriemeFilm);
         divQuatriemeFilm.appendChild(imageQuatriemeFilm);
         imageQuatriemeFilm.src = quatriemeFilmInfos["image"];
+        imageQuatriemeFilm.addEventListener("click", function(){
+            creerModal(quatriemeFilmInfos);
+        })
 
     })
     .catch(function(err) {
-      console.log(err);
-  });
-
+        console.log(err);
+    });
+    
     await fetch(deuxiemeLien)
     .then(function(res) {
         if(res.ok)
@@ -140,7 +204,10 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
         categorieFilm.appendChild(divCinquiemeFilm);
         divCinquiemeFilm.appendChild(imagecinquiemeFilm);
         imagecinquiemeFilm.src = cinquiemeFilmInfos["image"];
-
+        imagecinquiemeFilm.addEventListener("click", function(){
+            creerModal(cinquiemeFilmInfos);
+        })
+        
         let sixiemeFilmInfos = await chercherFilmInfos(films[5]);
         let imagesixiemeFilm = document.createElement("img");
         let divSixiemeFilm = document.createElement("div");
@@ -148,7 +215,10 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
         categorieFilm.appendChild(divSixiemeFilm);
         divSixiemeFilm.appendChild(imagesixiemeFilm);
         imagesixiemeFilm.src = sixiemeFilmInfos["image"];
-
+        imagesixiemeFilm.addEventListener("click", function(){
+            creerModal(sixiemeFilmInfos);
+        })
+        
         let septiemeFilmInfos = await chercherFilmInfos(films[6]);
         let imageSeptiemeFilm = document.createElement("img");
         let divSeptiemeFilm = document.createElement("div");
@@ -156,29 +226,32 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
         categorieFilm.appendChild(divSeptiemeFilm);
         divSeptiemeFilm.appendChild(imageSeptiemeFilm);
         imageSeptiemeFilm.src = septiemeFilmInfos["image"];
-
+        imageSeptiemeFilm.addEventListener("click", function(){
+            creerModal(septiemeFilmInfos);
+        })
+        
     })
     .catch(function(err) {
-      console.log(err);
-  });
+        console.log(err);
+    });
 }
 
 
 async function afficherTousFilms(){
-let premierePageMeilleursFilms = "http://localhost:8000/api/v1/titles/?page=1&sort_by=-imdb_score";
-let deuxiemePageMeilleursFilms = "http://localhost:8000/api/v1/titles/?page=2&sort_by=-imdb_score";
-let categorieMeilleursFilms = "contenu_carousel_sept_meilleurs_films";
-
-septMeilleursFilm = await afficherSeptFilms(premierePageMeilleursFilms, deuxiemePageMeilleursFilms, categorieMeilleursFilms);
-
-
-let premierePageMeilleursFilmsAnimation = "http://localhost:8000/api/v1/titles/?genre=Animation&page=1&sort_by=-imdb_score";
-let deuxiemePageMeilleursFilmsAnimation = "http://localhost:8000/api/v1/titles/?genre=Animation&page=2&sort_by=-imdb_score";
-let categorieFilmsAnimation = "contenu_carousel_premiere_categorie";
-
-septMeilleursFilmAnimation = await afficherSeptFilms(premierePageMeilleursFilmsAnimation, deuxiemePageMeilleursFilmsAnimation, categorieFilmsAnimation);
-
-let premierePageMeilleursFilmsSport = "http://localhost:8000/api/v1/titles/?genre=Sport&page=1&sort_by=-imdb_score";
+    let premierePageMeilleursFilms = "http://localhost:8000/api/v1/titles/?page=1&sort_by=-imdb_score";
+    let deuxiemePageMeilleursFilms = "http://localhost:8000/api/v1/titles/?page=2&sort_by=-imdb_score";
+    let categorieMeilleursFilms = "contenu_carousel_sept_meilleurs_films";
+    
+    septMeilleursFilm = await afficherSeptFilms(premierePageMeilleursFilms, deuxiemePageMeilleursFilms, categorieMeilleursFilms);
+    
+    
+    let premierePageMeilleursFilmsAnimation = "http://localhost:8000/api/v1/titles/?genre=Animation&page=1&sort_by=-imdb_score";
+    let deuxiemePageMeilleursFilmsAnimation = "http://localhost:8000/api/v1/titles/?genre=Animation&page=2&sort_by=-imdb_score";
+    let categorieFilmsAnimation = "contenu_carousel_premiere_categorie";
+    
+    septMeilleursFilmAnimation = await afficherSeptFilms(premierePageMeilleursFilmsAnimation, deuxiemePageMeilleursFilmsAnimation, categorieFilmsAnimation);
+    
+    let premierePageMeilleursFilmsSport = "http://localhost:8000/api/v1/titles/?genre=Sport&page=1&sort_by=-imdb_score";
 let deuxiemePageMeilleursFilmsSport = "http://localhost:8000/api/v1/titles/?genre=Sport&page=2&sort_by=-imdb_score";
 let categorieFilmsSport = "contenu_carousel_deuxieme_categorie";
 
@@ -199,28 +272,23 @@ let afficherFilms = afficherTousFilms();
 
 
 function bougerCarousel(index, id){
- let contenu = document.querySelector(id);
- boutonPrecedent = contenu.nextElementSibling;
- boutonPrecedent.addEventListener('click', function(){
-    index = index + 15;
-    contenu.style.transform = "translate("+ index +"%)";
-  });
- let boutonSuivant = boutonPrecedent.nextElementSibling;
- boutonSuivant.addEventListener('click', function(){
-    index = index -15;
-    contenu.style.transform = "translate("+ index +"%)";
-  });
+    let contenu = document.querySelector(id);
+    boutonPrecedent = contenu.nextElementSibling;
+    boutonPrecedent.addEventListener('click', function(){
+        index = index + 15;
+        contenu.style.transform = "translate("+ index +"%)";
+    });
+    let boutonSuivant = boutonPrecedent.nextElementSibling;
+    boutonSuivant.addEventListener('click', function(){
+        index = index - 15;
+        contenu.style.transform = "translate("+ index +"%)";
+    });
 };
 
 let bougerSeptMeilleursFilms = bougerCarousel(0, "#contenu_carousel_sept_meilleurs_films");
 let bougerPremiereCategorie = bougerCarousel(0, "#contenu_carousel_premiere_categorie");
 let bougerDeuxiemeCategorie = bougerCarousel(0, "#contenu_carousel_deuxieme_categorie");
 let bougerTroisiemeCategorie = bougerCarousel(0, "#contenu_carousel_troisieme_categorie");
-
-
-
-
-
 
 
 
