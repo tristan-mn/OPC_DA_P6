@@ -206,3 +206,7 @@ img{
     text-decoration: none;
     cursor: pointer;
 }
+
+p{
+    font-size: large;
+}
