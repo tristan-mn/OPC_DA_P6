@@ -29,7 +29,7 @@ $ python manage.py runserver
 
 ## Usage
 
-Lancez le fichier JustStreamit.html avec votre navigateur.
-En tête d'affiche se trouve le film le mieux noté toutes catégories confondues.
-Ensuite un classement des septs films les mieux notés toutes catégories confondues.
-Pour finir, le même classement s'opère pour les catégories Animation, Sport et Science-fiction.
+Lancez le fichier JustStreamit.html avec votre navigateur.   
+En tête d'affiche se trouve le film le mieux noté toutes catégories confondues.   
+Ensuite un classement des septs films les mieux notés toutes catégories confondues.   
+Pour finir, le même classement s'opère pour les catégories Animation, Sport et Science-fiction.   
