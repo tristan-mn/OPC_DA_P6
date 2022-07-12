@@ -1,3 +1,9 @@
+/**
+ * une fonction asynchrone permettant d'aller récupérer des informations pour un film
+ * @param {str} lienFilm 
+ * @returns un objet javascript avec toutes les informations pour un film
+ */
+
 async function chercherFilmInfos(lienFilm){
 
     return await fetch(lienFilm)
@@ -26,6 +32,12 @@ async function chercherFilmInfos(lienFilm){
     
 };
 
+
+/**
+ * fonction qui va créer une nouvelle fenêtre en affichant l'intérieur 
+ * les informations du film donné en paramètre
+ * @param {object} film 
+ */
 function creerModal(film){
 
     let modal = document.createElement("div");
@@ -88,10 +100,10 @@ function creerModal(film){
 };
 
 
-function afficherModal(){}
-
-
-
+/**
+ * cette fonction va chercher dans l'api le film le mieux noter
+ * affiche ensuite l'image, le titre et le résumé du film sur la page html
+ */
 function chercherMeilleurFilm(){
    fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
         .then(function(res) {
@@ -108,6 +120,8 @@ function chercherMeilleurFilm(){
             let image = document.getElementById("meilleur_film_image");
             image.src = meilleurFilmInfos["image"];
             meilleurFilmBouton = document.getElementById("meilleur_film_bouton");
+            //  si l'utilisateur clique sur le bouton le modal est créé
+            // le modal s'affiche sur la page
             meilleurFilmBouton.addEventListener("click", function(){
                 creerModal(meilleurFilmInfos);
             })
@@ -122,21 +136,31 @@ function chercherMeilleurFilm(){
 chercherMeilleurFilm();
 
 
+/**
+ * 
+ * @param {str} premierLien le lien de la premiere page affichant les films
+ * @param {str} deuxiemeLien le lien de la deuxieme page affichant les films
+ * @param {str} id nom de l'id de la div contenant les 7 films pour la catégorie choisie
+ */
 async function afficherSeptFilms(premierLien, deuxiemeLien, id){
-    
     await fetch(premierLien)
     .then(function(res) {
         if(res.ok)
         return res.json();
     }).then(async function(value){
         films = [];
+        // on va d'abord chercher les liens url pour chaque film 
         let premierFilmLien = value["results"][1]["url"];
         let secondFilmLien = value["results"][2]["url"];
         let troisiemeFilmLien = value["results"][3]["url"];
         let quatriemeFilmLien = value["results"][4]["url"];
         films.push(premierFilmLien, secondFilmLien, troisiemeFilmLien, quatriemeFilmLien);
+
         let categorieFilm = document.getElementById(id);
 
+        // Pour chaque film on va récupérer les informations
+        // ajouter l'image du film
+        // ecouter l'évenement du click sur l'image pour afficher une fenêtre modal
         let premierFilmInfos = await chercherFilmInfos(films[0]);
         let imagePremierFilm = document.createElement("img");
         let divPremierFilm = document.createElement("div");
@@ -185,7 +209,7 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
     .catch(function(err) {
         console.log(err);
     });
-    
+
     await fetch(deuxiemeLien)
     .then(function(res) {
         if(res.ok)
@@ -236,7 +260,9 @@ async function afficherSeptFilms(premierLien, deuxiemeLien, id){
     });
 }
 
-
+/**
+ * Pour chaque catégorie de films on affiche 7 films 
+ */
 async function afficherTousFilms(){
     let premierePageMeilleursFilms = "http://localhost:8000/api/v1/titles/?page=1&sort_by=-imdb_score";
     let deuxiemePageMeilleursFilms = "http://localhost:8000/api/v1/titles/?page=2&sort_by=-imdb_score";
@@ -252,25 +278,26 @@ async function afficherTousFilms(){
     septMeilleursFilmAnimation = await afficherSeptFilms(premierePageMeilleursFilmsAnimation, deuxiemePageMeilleursFilmsAnimation, categorieFilmsAnimation);
     
     let premierePageMeilleursFilmsSport = "http://localhost:8000/api/v1/titles/?genre=Sport&page=1&sort_by=-imdb_score";
-let deuxiemePageMeilleursFilmsSport = "http://localhost:8000/api/v1/titles/?genre=Sport&page=2&sort_by=-imdb_score";
-let categorieFilmsSport = "contenu_carousel_deuxieme_categorie";
+    let deuxiemePageMeilleursFilmsSport = "http://localhost:8000/api/v1/titles/?genre=Sport&page=2&sort_by=-imdb_score";
+    let categorieFilmsSport = "contenu_carousel_deuxieme_categorie";
 
-septMeilleursFilmSport =  await afficherSeptFilms(premierePageMeilleursFilmsSport, deuxiemePageMeilleursFilmsSport, categorieFilmsSport);
+    septMeilleursFilmSport =  await afficherSeptFilms(premierePageMeilleursFilmsSport, deuxiemePageMeilleursFilmsSport, categorieFilmsSport);
 
-let premierePageMeilleursFilmsSciFi = "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page=1&sort_by=-imdb_score";
-let deuxiemePageMeilleursFilmsSciFi = "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page=2&sort_by=-imdb_score";
-let categorieFilmsSciFi = "contenu_carousel_troisieme_categorie";
+    let premierePageMeilleursFilmsSciFi = "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page=1&sort_by=-imdb_score";
+    let deuxiemePageMeilleursFilmsSciFi = "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page=2&sort_by=-imdb_score";
+    let categorieFilmsSciFi = "contenu_carousel_troisieme_categorie";
 
-septMeilleursFilmSciFi = await  afficherSeptFilms(premierePageMeilleursFilmsSciFi, deuxiemePageMeilleursFilmsSciFi, categorieFilmsSciFi);
-
-
-
+    septMeilleursFilmSciFi = await  afficherSeptFilms(premierePageMeilleursFilmsSciFi, deuxiemePageMeilleursFilmsSciFi, categorieFilmsSciFi);
 }
 
 let afficherFilms = afficherTousFilms();
 
 
-
+/**
+ * 
+ * @param {int} index index de base
+ * @param {str} id nom de l'id de la div contenant les 7 films pour la catégorie choisie
+ */
 function bougerCarousel(index, id){
     let contenu = document.querySelector(id);
     boutonPrecedent = contenu.nextElementSibling;
