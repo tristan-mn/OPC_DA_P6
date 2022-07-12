@@ -10,24 +10,23 @@ Pour celà je devais importer les données à partir d'une api avec Javascript.
 
 Étape à effectuer une seule fois :
 
-```bash
-$ git clone https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR.git
-$ cd OCMovies-API-EN-FR
-$ python3 -m venv env (Sous Windows => python -m venv env)
-$ source env/bin/activate (Sous Windows => env\Scripts\activate)
-$ pip install -r requirements.txt
-$ python manage.py create_db
-```
+git clone https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR.git
+cd OCMovies-API-EN-FR
+python3 -m venv env (Sous Windows => python -m venv env)
+source env/bin/activate (Sous Windows => env\Scripts\activate)
+pip install -r requirements.txt
+python manage.py create_db
+
 
 ### Lancement
 
 Étape à répéter à chaque utilisation
 
-```bash
-$ source env/bin/activate (Sous Windows => env\Scripts\activate)
-$ python manage.py runserver
-$ pour finir cliquer sur le lien [http://localhost:8000/api/v1/titles/](http://localhost:8000/api/v1/titles/)
-```
+
+source env/bin/activate (Sous Windows => env\Scripts\activate)
+python manage.py runserver
+pour finir cliquer sur le lien [http://localhost:8000/api/v1/titles/](http://localhost:8000/api/v1/titles/)
+
 
 ## Usage
 
