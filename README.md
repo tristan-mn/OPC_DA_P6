@@ -26,7 +26,7 @@ $ python manage.py create_db
 ```bash
 $ source env/bin/activate (Sous Windows => env\Scripts\activate)
 $ python manage.py runserver
-$ pour finir cliquer sur le lien [http://localhost:8000/api/v1/titles/]
+$ pour finir cliquer sur le lien [http://localhost:8000/api/v1/titles/](http://localhost:8000/api/v1/titles/)
 ```
 
 ## Usage
