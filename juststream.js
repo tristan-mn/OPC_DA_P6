@@ -112,14 +112,19 @@ function chercherMeilleurFilm(){
             }
         }).then(async function(value) {
             let urlFilm = value["results"][0]["url"];
-            meilleurFilmInfos = await chercherFilmInfos(urlFilm);
-            let titreFilm = document.getElementById("meilleur_film_titre");
+            let meilleurFilmInfos = await chercherFilmInfos(urlFilm);
+            let titreFilm = document.createElement("h3")
             titreFilm.textContent = meilleurFilmInfos["titre"];
+            let divTitre = document.getElementById("meilleur_film_titre")
+            divTitre.appendChild(titreFilm)
             let descriptionFilm = document.getElementById("meilleur_film_description");
             descriptionFilm.textContent = meilleurFilmInfos["resume"];
-            let image = document.getElementById("meilleur_film_image");
-            image.src = meilleurFilmInfos["image"];
-            meilleurFilmBouton = document.getElementById("meilleur_film_bouton");
+            let image = document.createElement("img")
+            image.setAttribute("id", "meilleur_film_image")
+            image.src = meilleurFilmInfos["image"]
+            let divImage = document.getElementById("div_meilleur_film_image")
+            divImage.appendChild(image)
+            let meilleurFilmBouton = document.getElementById("meilleur_film_bouton");
             //  si l'utilisateur clique sur le bouton le modal est créé
             // le modal s'affiche sur la page
             meilleurFilmBouton.addEventListener("click", function(){
