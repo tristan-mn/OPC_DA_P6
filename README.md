@@ -23,9 +23,10 @@ python manage.py create_db
 Étape à répéter à chaque utilisation   
 
 
-source env/bin/activate (Sous Windows => env\Scripts\activate)  
+source env/bin/activate (Sous Windows => env\Scripts\activate) 
+cd OCMovies-API-EN-FR   
 python manage.py runserver   
-pour finir cliquer sur le lien [http://localhost:8000/api/v1/titles/](http://localhost:8000/api/v1/titles/)  
+pour accéder à l'API [http://localhost:8000/api/v1/titles/](http://localhost:8000/api/v1/titles/)  
 
 
 ## Usage
